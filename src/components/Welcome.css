@@ -1,56 +1,103 @@
 /* src/components/Welcome.css */
-
 .welcome-container {
-  max-width: 600px; /* 너무 넓어지지 않게 제한 */
-  margin: 0 auto; /* 화면 중앙 정렬 */
-  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.welcome-header {
   text-align: center;
-  border-radius: 16px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 살짝 그림자 */
+}
+
+.badge {
+  display: inline-block;
+  background: #f1f5f9; /* Slate 100 */
+  color: var(--text-sub);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
 }
 
 .title {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+  /* Removed gradient text */
 }
 
 .description {
-  font-size: 1.1rem;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
-
-.info-list {
-  text-align: left; /* 리스트는 왼쪽 정렬 */
-  background-color: #f8f9fa;
-  padding: 20px 40px;
-  border-radius: 8px;
-  list-style: none; /* 기본 점 제거 */
-  margin-bottom: 40px;
-  display: inline-block; /* 내용만큼만 너비 차지 */
-}
-
-.info-list li {
-  margin-bottom: 10px;
+  color: var(--text-sub);
   font-size: 1rem;
-  color: #444;
+  line-height: 1.6;
+}
+
+.info-cards {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.info-card {
+  flex: 1;
+  background: #f8fafc; /* Slate 50 */
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.info-card .icon {
+  font-size: 1.5rem;
+  background: white;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.info-card .text {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.info-card strong {
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.info-card span {
+  color: var(--text-sub);
+  font-size: 0.8rem;
 }
 
 .start-button {
-  background-color: #4caf50; /* 초록색 버튼 */
-  color: white;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.2rem;
-  border-radius: 50px; /* 둥근 버튼 */
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-weight: bold;
+  background: var(--primary-color); /* Solid Blue */
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
 }
 
 .start-button:hover {
-  background-color: #45a049; /* 호버 시 약간 진하게 */
+  background: var(--primary-hover);
 }

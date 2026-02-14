@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="app-main">
+      <div className="app-container">
       {step === "welcome" && <Welcome onStart={() => setStep("quiz")} />}
       {step === "quiz" && <Quiz onFinish={handleQuizFinish} />}
       {step === "result" && (
@@ -32,6 +33,7 @@ function App() {
           onRestart={handleRestart}
         />
       )}
+      </div>
     </div>
   );
 }

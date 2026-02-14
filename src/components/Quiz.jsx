@@ -7,42 +7,48 @@ const Quiz = ({ onFinish }) => {
   const [score, setScore] = useState(0);
 
   const handleAnswerClick = (selectedScore) => {
-    // 인자가 index에서 score로 변경됨
-
-    // 1. 점수 누적 (선택한 보기의 점수를 더함)
     const newScore = score + selectedScore;
     setScore(newScore);
 
-    // 2. 다음 문제로 이동
     const nextQuestion = currentQuestionIndex + 1;
 
     if (nextQuestion < questions.length) {
       setCurrentQuestionIndex(nextQuestion);
     } else {
-      // 마지막 문제면 최종 점수 전달
       onFinish(newScore);
     }
   };
 
+  const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+
   return (
     <div className="quiz-container">
-      <div className="progress-bar">
-        <span>Question{currentQuestionIndex + 1}</span> / {questions.length}
+      <div className="progress-header">
+        <div className="progress-info">
+          <span>Question {currentQuestionIndex + 1}</span>
+          <span>{questions.length}</span>
+        </div>
+        <div className="progress-bar-bg">
+          <div 
+            className="progress-bar-fill" 
+            style={{ width: `${progressPercentage}%` }}
+          ></div>
+        </div>
       </div>
 
-      <h2 className="question-text">
-        {questions[currentQuestionIndex].question}
-      </h2>
+      <div className="question-section">
+        <h2 className="question-text">
+          {questions[currentQuestionIndex].question}
+        </h2>
+      </div>
 
       <div className="options-container">
         {questions[currentQuestionIndex].options.map((option, index) => (
           <button
             key={index}
             className="option-button"
-            // 클릭 시 해당 옵션의 점수(option.score)를 넘겨줌
             onClick={() => handleAnswerClick(option.score)}
           >
-            {/* 이제 option이 객체이므로 option.text로 글자를 보여줌 */}
             {option.text}
           </button>
         ))}

@@ -1,51 +1,73 @@
 /* src/components/Quiz.css */
-
 .quiz-container {
-  max-width: 600px;
-  width: 90%;
-  margin: 0 auto;
-  padding: 30px;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-.progress-bar {
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-  color: #888;
-  font-weight: bold;
+.progress-header {
+  margin-bottom: 0.5rem;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-sub);
+  font-size: 0.85rem;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background-color: #f1f5f9;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--primary-color); /* Solid Blue */
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.question-section {
+  text-align: left;
+  margin: 1rem 0;
 }
 
 .question-text {
-  font-size: 1.5rem;
-  margin-bottom: 30px;
-  color: #333;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.5;
+  word-break: keep-all;
 }
 
 .options-container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0.75rem;
 }
 
 .option-button {
-  padding: 15px;
+  background: white;
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  border-radius: 12px;
+  text-align: left;
   font-size: 1rem;
-  background-color: #f0f2f5;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
 .option-button:hover {
-  background-color: #e3e6ea;
-  border-color: #ccc;
-}
-
-.option-button:active {
-  background-color: #dbe0e6;
-  transform: scale(0.98);
+  border-color: var(--primary-color);
+  background-color: #f8fafc;
+  color: var(--primary-color);
+  transform: translateY(-1px);
 }
