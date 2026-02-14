@@ -1,0 +1,56 @@
+/* src/components/Welcome.css */
+
+.welcome-container {
+  max-width: 600px; /* 너무 넓어지지 않게 제한 */
+  margin: 0 auto; /* 화면 중앙 정렬 */
+  padding: 40px;
+  text-align: center;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* 살짝 그림자 */
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.info-list {
+  text-align: left; /* 리스트는 왼쪽 정렬 */
+  background-color: #f8f9fa;
+  padding: 20px 40px;
+  border-radius: 8px;
+  list-style: none; /* 기본 점 제거 */
+  margin-bottom: 40px;
+  display: inline-block; /* 내용만큼만 너비 차지 */
+}
+
+.info-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #444;
+}
+
+.start-button {
+  background-color: #4caf50; /* 초록색 버튼 */
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px; /* 둥근 버튼 */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.start-button:hover {
+  background-color: #45a049; /* 호버 시 약간 진하게 */
+}
