@@ -36,7 +36,7 @@
 }
 
 .title {
-  font-size: 2.25rem;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
   margin-bottom: 0.75rem;
   color: var(--text-main);
   /* Removed gradient text */
@@ -44,7 +44,7 @@
 
 .description {
   color: var(--text-sub);
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 3vw, 1rem);
   line-height: 1.6;
 }
 
@@ -101,7 +101,7 @@
 .start-button {
   background: var(--primary-color); /* Solid Blue */
   padding: 1rem 3rem;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 4vw, 1.1rem);
   width: 100%;
   border-radius: 8px;
   display: flex;

@@ -40,7 +40,7 @@
 }
 
 .question-text {
-  font-size: 1.35rem;
+  font-size: clamp(1.1rem, 4vw, 1.35rem);
   font-weight: 700;
   color: var(--text-main);
   line-height: 1.5;
@@ -59,7 +59,7 @@
   padding: 1.25rem;
   border-radius: 12px;
   text-align: left;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 3vw, 1rem);
   color: var(--text-main);
   transition: all 0.2s ease;
   font-weight: 500;
