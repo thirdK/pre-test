@@ -1,4 +1,3 @@
-/* src/components/Welcome.css */
 .welcome-container {
   display: flex;
   flex-direction: column;
@@ -8,6 +7,16 @@
 
 .welcome-header {
   text-align: center;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .badge {
