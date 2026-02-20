@@ -88,12 +88,12 @@ export const getFinalResult = (answers) => {
     resultId = "PASS_1";
   }
 
-  // 안전하게 결과 데이터를 찾고, 없을 경우 마지막 항목(보통 FAIL)을 반환하거나 undefined 처리
+  // 결과 데이터를 없을 경우 마지막 항목(FAIL)을 반환하거나 undefined 처리?
   const result =
     resultData.find((r) => r.id === resultId) ||
     resultData[resultData.length - 1];
 
-  // 최종 결과 정보와 함께 실제 점수도 같이 넘겨줍니다. (UI 활용 용도)
+  // 최종 결과 정보와 함께 실제 점수도 같이 넘김 (UI 활용 용도)
   return {
     ...result,
     scoreA,
