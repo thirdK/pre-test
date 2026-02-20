@@ -1,18 +1,24 @@
 import React from "react";
-import { getResultByScore } from "../data/results";
+import { getFinalResult } from "../data/results";
 import "./Result.css";
 
-const Result = ({ score, totalScore, onRestart }) => {
-  const { level, message, color, recommendation } = getResultByScore(score);
+const Result = ({ score: answers, totalScore, onRestart }) => {
+  const { level, message, color, recommendation, scoreA, scoreB } =
+    getFinalResult(answers);
+
+  const totalObtained = scoreA + scoreB;
 
   return (
     <div className="result-container">
       <div className="score-box">
         <p className="score-label">Your Score</p>
         <h1 className="score-value" style={{ color: color }}>
-          {score}
+          {totalObtained}
         </h1>
         <p className="total-score">/ {totalScore}</p>
+        <div className="sub-scores">
+          <span>기초: {scoreA}</span> | <span>심화: {scoreB}</span>
+        </div>
       </div>
 
       <div className="result-message-box">
