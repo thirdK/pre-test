@@ -6,19 +6,21 @@
   min-height: 100vh;
   width: 100%;
   background: var(--background-color);
-  padding: 20px;
+  padding: 12px;
 }
 
 .app-container {
   background: var(--card-bg);
-  padding: 3rem 3rem 3rem 3rem;
-  border-radius: 16px; /* Cleaner radius */
+  padding: 5rem 3.5rem; /* Increased padding for more "luxury" feel */
+  border-radius: 48px;
   box-shadow: var(--shadow-card);
-  border: 1px solid var(--border-color);
-  width: 100%;
-  max-width: 540px; /* Slightly narrower for focus */
+  border: none;
+  width: calc(100% - 24px);
+  max-width: 1100px;
   text-align: center;
-  animation: fadeIn 0.4s ease-out;
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @keyframes fadeIn {
@@ -30,4 +32,31 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 브랜드 요소: app-container padding 영역에 절대 배치 */
+.brand-header {
+  position: absolute;
+  top: 1.75rem;
+  left: 2rem;
+  z-index: 10;
+}
+
+.brand-logo {
+  max-width: 80px;
+  height: auto;
+  filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255,255,255,0.2));
+  opacity: 0.7;
+}
+
+.brand-footer {
+  position: absolute;
+  bottom: 1.75rem;
+  right: 2rem;
+  font-size: 0.7rem;
+  color: var(--text-sub);
+  opacity: 0.4;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  z-index: 10;
 }

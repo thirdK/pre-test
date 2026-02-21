@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 :root {
-  /* Clean & Minimal Palette */
-  --primary-color: #2563eb; /* Royal Blue */
-  --primary-hover: #1d4ed8; /* Darker Blue */
-  --secondary-color: #3b82f6; /* Lighter Blue */
-  --background-color: #f8fafc; /* Very Light Gray (Slate 50) */
-  --card-bg: #ffffff;
-  --text-main: #1e293b; /* Slate 800 */
-  --text-sub: #64748b; /* Slate 500 */
-  --border-color: #e2e8f0; /* Slate 200 */
-  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -1px rgb(0 0 0 / 0.03);
+  /* Dark Game Palette */
+  --primary-color: #FF6B6B;    /* Coral — quiz/result 버튼 유지 */
+  --primary-hover: #FF5252;
+  --secondary-color: #4ECDC4;  /* Mint — 진행바 등 */
+  --background-color: #1B1933; /* 조금 밝은 다크 퍼플 */
+  --card-bg: #231F40;          /* 조금 밝은 다크 카드 */
+  --text-main: #F0EEFF;        /* Near-white with purple tint */
+  --text-sub: #8B8FA8;         /* Muted purple-gray */
+  --border-color: #2D2B45;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 0 0 1px rgba(124, 58, 237, 0.2), 0 0 60px rgba(124, 58, 237, 0.12), 0 24px 60px rgba(0, 0, 0, 0.6);
 
-  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
@@ -43,31 +43,39 @@ body {
   align-items: center;
 }
 
-h1, h2, h3 {
-  line-height: 1.3;
-  font-weight: 700;
+#root {
+  width: 100%;
+}
+
+h1, h2, h3, .title, .level-title {
+  font-family: 'Jua', sans-serif;
+  line-height: 1.2;
+  font-weight: 400; /* Jua is inherently bold */
   color: var(--text-main);
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 
 button {
-  background-color: var(--text-main); /* Black/Dark Gray Buttons */
+  background-color: var(--primary-color);
   color: white;
-  border-radius: 8px; /* Slightly less rounded */
+  border-radius: 100px; /* Fully rounded buttons */
   border: none;
-  padding: 0.8em 1.6em;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   font-family: inherit;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 0px 0px #EE5253; /* Button depth effect */
 }
 
 button:hover {
-  background-color: #0f172a; /* Darker Slate */
-  transform: translateY(-1px);
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0px 0px #EE5253;
 }
 
 button:active {
-  transform: translateY(0);
+  transform: translateY(2px);
+  box-shadow: 0 0px 0px 0px #EE5253;
 }

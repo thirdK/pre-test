@@ -1,73 +1,281 @@
-/* src/components/Quiz.css */
+/* src/components/Quiz.css — Dark Game HUD Theme */
+
 .quiz-container {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 2rem;
+  position: relative; /* 장식 요소의 기준점 */
 }
 
-.progress-header {
-  margin-bottom: 0.5rem;
+/* ── 배경 글로우 오브 ── */
+.quiz-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(65px);
 }
 
-.progress-info {
+.quiz-orb--1 {
+  width: 280px;
+  height: 280px;
+  background: rgba(124, 58, 237, 0.22);
+  top: -80px;
+  right: -60px;
+  animation: orbFloat 9s ease-in-out infinite;
+}
+
+.quiz-orb--2 {
+  width: 220px;
+  height: 220px;
+  background: rgba(255, 107, 107, 0.16);
+  bottom: 20px;
+  left: -60px;
+  animation: orbFloat 11s ease-in-out infinite reverse;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-12px, 16px); }
+}
+
+/* ── 회전 별 장식 ── */
+.spin-star {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  color: #FFD700;
+  animation: spinStar linear infinite;
+}
+
+.spin-star--1 {
+  font-size: 1.4rem;
+  top: 12%;
+  right: 4%;
+  opacity: 0.55;
+  animation-duration: 6s;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.7));
+}
+
+.spin-star--2 {
+  font-size: 0.9rem;
+  bottom: 18%;
+  right: 8%;
+  opacity: 0.4;
+  animation-duration: 9s;
+  animation-direction: reverse;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.5));
+}
+
+.spin-star--3 {
+  font-size: 1.1rem;
+  top: 50%;
+  left: 2%;
+  opacity: 0.35;
+  animation-duration: 12s;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+}
+
+@keyframes spinStar {
+  from { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.2); }
+  to   { transform: rotate(360deg) scale(1); }
+}
+
+/* 나머지 요소들이 장식 위에 오도록 */
+.progress-header,
+.question-section,
+.options-container,
+.category-badge {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 문항 전환 래퍼 ── */
+.quiz-content {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: var(--text-sub);
-  font-size: 0.85rem;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-.progress-bar-bg {
-  width: 100%;
-  height: 6px;
-  background-color: #f1f5f9;
-  border-radius: 999px;
-  overflow: hidden;
+/* 나가기: 왼쪽으로 밀리며 사라짐 */
+.quiz-content--exit {
+  animation: quizExit 0.22s cubic-bezier(0.4, 0, 1, 1) both;
+  pointer-events: none;
 }
 
-.progress-bar-fill {
-  height: 100%;
-  background: var(--primary-color); /* Solid Blue */
-  border-radius: 999px;
-  transition: width 0.3s ease;
+/* 들어오기: 오른쪽에서 들어옴 */
+.quiz-content--enter {
+  animation: quizEnter 0.32s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
-.question-section {
-  text-align: left;
-  margin: 1rem 0;
+@keyframes quizExit {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-28px); }
 }
 
-.question-text {
-  font-size: clamp(1.1rem, 4vw, 1.35rem);
+@keyframes quizEnter {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── 카테고리 배지 (우상단) ── */
+.category-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 10px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--text-main);
-  line-height: 1.5;
-  word-break: keep-all;
+  color: #FFD700;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+  font-family: 'Noto Sans KR', sans-serif;
+  z-index: 2;
 }
 
-.options-container {
+/* ── 진행 헤더 ── */
+.progress-header {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
-.option-button {
-  background: white;
-  border: 1px solid var(--border-color);
-  padding: 1.25rem;
-  border-radius: 12px;
-  text-align: left;
-  font-size: clamp(0.9rem, 3vw, 1rem);
+.progress-info {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+/* "Q.01" 게임 HUD 스타일 */
+.progress-current {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 1rem;
+  color: var(--text-sub);
+  letter-spacing: 0.05em;
+}
+
+.progress-current strong {
+  font-size: 1.6rem;
+  color: #FFD700;
+  font-weight: 700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+.progress-total {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+}
+
+/* 진행 바 */
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF6B6B, #FFD700, #4ECDC4);
+  border-radius: 999px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
+/* ── 질문 영역 ── */
+.question-section {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.question-text {
+  font-family: 'Jua', sans-serif;
+  font-size: clamp(1.15rem, 4vw, 1.45rem);
+  font-weight: 400;
   color: var(--text-main);
-  transition: all 0.2s ease;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+/* ── 선택지 ── */
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.option-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  padding: 1.1rem 1.4rem;
+  border-radius: 14px;
+  text-align: left;
+  font-size: 1rem;
+  color: var(--text-main);
+  transition: all 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   font-weight: 500;
+  box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+/* 선택지 번호 뱃지 */
+.option-label {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  letter-spacing: 0;
+  transition: all 0.22s ease;
+}
+
+.option-text {
+  flex: 1;
 }
 
 .option-button:hover {
-  border-color: var(--primary-color);
-  background-color: #f8fafc;
-  color: var(--primary-color);
-  transform: translateY(-1px);
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.06);
+  color: var(--text-main);
+  transform: translateX(4px);
+  box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.2),
+              0 0 20px rgba(255, 215, 0, 0.1);
+}
+
+.option-button:hover .option-label {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.6);
+  color: #FFD700;
+}
+
+.option-button:active {
+  transform: translateX(4px) translateY(3px);
+  box-shadow: 0 0px 0px 0px rgba(0, 0, 0, 0.2);
 }
