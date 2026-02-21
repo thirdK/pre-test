@@ -177,6 +177,13 @@
   animation: slideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.3s both;
 }
 
+@media (max-width: 768px) {
+  .info-cards {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
 .info-card {
   flex: 1;
   padding: 1.75rem 0.75rem;
@@ -190,6 +197,16 @@
   backdrop-filter: blur(12px);
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               box-shadow 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .info-card {
+    flex-direction: row;
+    padding: 1.25rem 1.75rem; /* Slightly more padding for mobile */
+    justify-content: flex-start;
+    gap: 1.75rem; /* Increased gap from 1.25rem to 1.75rem */
+    align-items: center;
+  }
 }
 
 /* 카드별 네온 글로우 */
@@ -222,6 +239,12 @@
   box-shadow: 0 0 36px rgba(78, 205, 196, 0.35), inset 0 0 18px rgba(78, 205, 196, 0.06);
 }
 
+@media (max-width: 768px) {
+  .info-card:hover {
+    transform: none; /* Mobile hover scale often feels buggy */
+  }
+}
+
 .info-card .icon {
   font-size: 1.9rem;
   background: rgba(255, 255, 255, 0.06);
@@ -234,12 +257,40 @@
   margin-bottom: 0.4rem;
 }
 
+@media (max-width: 768px) {
+  .info-card .icon {
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+}
+
+.card-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .card-text-group {
+    align-items: flex-start;
+  }
+}
+
 .card-value {
   font-family: 'Jua', sans-serif;
   font-size: 2rem;
   font-weight: 400;
   line-height: 1;
   color: inherit;
+}
+
+@media (max-width: 768px) {
+  .card-value {
+    font-size: 1.6rem;
+  }
 }
 
 .card-label {

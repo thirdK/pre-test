@@ -23,6 +23,25 @@
   animation: fadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
+/* Responsive Adjustments for App Container */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 4rem 2rem;
+    border-radius: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-main {
+    padding: 8px;
+  }
+  .app-container {
+    padding: 3.5rem 1.25rem 2.5rem;
+    border-radius: 24px;
+    width: calc(100% - 16px);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -49,6 +68,16 @@
   opacity: 0.7;
 }
 
+@media (max-width: 480px) {
+  .brand-header {
+    top: 1.25rem;
+    left: 1.25rem;
+  }
+  .brand-logo {
+    max-width: 60px;
+  }
+}
+
 .brand-footer {
   position: absolute;
   bottom: 1.75rem;
@@ -59,4 +88,13 @@
   letter-spacing: 0.1em;
   font-weight: 500;
   z-index: 10;
+}
+
+@media (max-width: 480px) {
+  .brand-footer {
+    bottom: 1rem;
+    right: 0;
+    left: 0;
+    text-align: center;
+  }
 }

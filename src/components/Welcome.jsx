@@ -33,18 +33,24 @@ const Welcome = ({ onStart }) => {
       <div className="info-cards">
         <div className="info-card">
           <div className="icon">📝</div>
-          <div className="card-value">{questions.length}</div>
-          <div className="card-label">문항</div>
+          <div className="card-text-group">
+            <div className="card-value">{questions.length}</div>
+            <div className="card-label">문항</div>
+          </div>
         </div>
         <div className="info-card">
           <div className="icon">⏱️</div>
-          <div className="card-value">∞</div>
-          <div className="card-label">제한 없음</div>
+          <div className="card-text-group">
+            <div className="card-value">∞</div>
+            <div className="card-label">제한 없음</div>
+          </div>
         </div>
         <div className="info-card">
           <div className="icon">📊</div>
-          <div className="card-value">즉시</div>
-          <div className="card-label">결과 확인</div>
+          <div className="card-text-group">
+            <div className="card-value">즉시</div>
+            <div className="card-label">결과 확인</div>
+          </div>
         </div>
       </div>
 
