@@ -274,19 +274,22 @@
   flex: 1;
 }
 
-.option-button:hover {
-  border-color: rgba(255, 215, 0, 0.5);
-  background: rgba(255, 215, 0, 0.06);
-  color: var(--text-main);
-  transform: translateX(4px);
-  box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.2),
-              0 0 20px rgba(255, 215, 0, 0.1);
-}
+/* 데스크탑(마우스) 환경에서만 호버 효과 적용 */
+@media (hover: hover) {
+  .option-button:hover {
+    border-color: rgba(255, 215, 0, 0.5);
+    background: rgba(255, 215, 0, 0.06);
+    color: var(--text-main);
+    transform: translateX(4px);
+    box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(255, 215, 0, 0.1);
+  }
 
-.option-button:hover .option-label {
-  background: rgba(255, 215, 0, 0.15);
-  border-color: rgba(255, 215, 0, 0.6);
-  color: #FFD700;
+  .option-button:hover .option-label {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.6);
+    color: #FFD700;
+  }
 }
 
 .option-button:active {

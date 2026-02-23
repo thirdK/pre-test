@@ -97,7 +97,7 @@ const Quiz = ({ onFinish }) => {
         <div className="options-container">
           {currentQuestion.options.map((option, index) => (
             <button
-              key={index}
+              key={`${currentQuestion.id}-${index}`}
               className="option-button"
               onClick={() =>
                 handleAnswerClick(
