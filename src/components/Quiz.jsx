@@ -30,7 +30,12 @@ const Quiz = ({ onFinish }) => {
   const [answers, setAnswers] = useState({});
   const [isExiting, setIsExiting] = useState(false);
 
-  const handleAnswerClick = (id, group, score) => {
+  const handleAnswerClick = (e, id, group, score) => {
+    // 모바일 포커스 잔상 방지를 위해 포커스 강제 해제
+    if (e.currentTarget) {
+      e.currentTarget.blur();
+    }
+
     const newAnswers = { ...answers, [id]: { group, score } };
     setAnswers(newAnswers);
     const nextQuestion = currentQuestionIndex + 1;
@@ -99,8 +104,9 @@ const Quiz = ({ onFinish }) => {
             <button
               key={`${currentQuestion.id}-${index}`}
               className="option-button"
-              onClick={() =>
+              onClick={(e) =>
                 handleAnswerClick(
+                  e,
                   currentQuestion.id,
                   currentQuestion.group,
                   option.score,
