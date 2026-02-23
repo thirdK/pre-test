@@ -112,7 +112,7 @@ export const questions = [
     question: "인터넷에 접속하기 위해 실행하는 프로그램은 무엇입니까?",
     options: [
       { text: "유튜브(Youtube)", score: 0 },
-      { text: "네이버(Naver)", score: 0 },
+      { text: "네이버(Naver)", score: 5 },
       { text: "크롬(Chrome)", score: 10 },
       { text: "잘 모르겠습니다.", score: 0 },
     ],

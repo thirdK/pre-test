@@ -4,7 +4,7 @@ import Welcome from "./components/Welcome";
 import Quiz from "./components/Quiz";
 import Result from "./components/Result";
 import { questions } from "./data/questions";
-import logo from "./assets/KoreaIT.png";
+import logo from "./assets/KoreaAI.png";
 
 function App() {
   const [step, setStep] = useState("welcome");
