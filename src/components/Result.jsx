@@ -78,8 +78,22 @@ const Result = ({ score: answers, totalScore, onRestart }) => {
 
       {/* 추천 박스 */}
       <div className="recommendation-box">
-        <span className="recommendation-icon">💡</span>
-        <strong>학습 추천:</strong> {recommendation}
+        <div className="recommendation-header">
+          <span className="recommendation-icon">💡</span>
+          <strong>학습 추천:</strong>
+        </div>
+        <p className="recommendation-text">{recommendation?.title}</p>
+        
+        {recommendation?.tasks && recommendation.tasks.length > 0 && (
+          <ul className="recommendation-list">
+            {recommendation.tasks.map((task, index) => (
+              <li key={index} className="recommendation-item">
+                <span className="task-bullet" style={{ color }}>✔</span>
+                {task}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {/* 재시작 버튼 */}

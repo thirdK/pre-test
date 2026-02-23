@@ -11,8 +11,14 @@
 }
 
 @keyframes resultFadeIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ── 배경 글로우 오브 ── */
@@ -43,8 +49,13 @@
 }
 
 @keyframes resultOrbFloat {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(14px, -18px); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(14px, -18px);
+  }
 }
 
 /* ── 회전 별 장식 ── */
@@ -52,7 +63,7 @@
   position: absolute;
   pointer-events: none;
   z-index: 0;
-  color: #FFD700;
+  color: #ffd700;
   animation: resultSpinStar linear infinite;
 }
 
@@ -85,9 +96,15 @@
 }
 
 @keyframes resultSpinStar {
-  from { transform: rotate(0deg) scale(1); }
-  50%  { transform: rotate(180deg) scale(1.25); }
-  to   { transform: rotate(360deg) scale(1); }
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.25);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 /* 콘텐츠가 장식 위에 오도록 */
@@ -105,7 +122,11 @@
   flex-direction: column;
   align-items: center;
   gap: 0.15rem;
-  background: radial-gradient(ellipse at 50% 60%, rgba(255, 107, 107, 0.08) 0%, transparent 70%);
+  background: radial-gradient(
+    ellipse at 50% 60%,
+    rgba(255, 107, 107, 0.08) 0%,
+    transparent 70%
+  );
   padding: 1.5rem 2rem;
   border-radius: 28px;
   width: 100%;
@@ -120,16 +141,16 @@
 
 .score-label {
   font-size: 0.72rem;
-  color: #FFD700;
+  color: #ffd700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   margin-bottom: 0.2rem;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 .score-value {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   font-size: clamp(4.5rem, 14vw, 6rem);
   font-weight: 400;
   line-height: 1;
@@ -145,8 +166,14 @@
 }
 
 @keyframes scorePop {
-  from { transform: scale(0.8); opacity: 0.5; }
-  to   { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .total-score {
@@ -177,9 +204,9 @@
   padding: 0.35rem 0.75rem;
   border-radius: 10px;
   font-size: 0.88rem;
-  color: #FFD700;
+  color: #ffd700;
   font-weight: 700;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   letter-spacing: 0.04em;
 }
 
@@ -206,12 +233,18 @@
 }
 
 @keyframes levelSlideIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .level-line1 {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   font-size: clamp(1.8rem, 6vw, 2.4rem);
   font-weight: 400;
   letter-spacing: 0.05em;
@@ -219,7 +252,7 @@
 }
 
 .level-title {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   font-size: clamp(1.6rem, 6vw, 2.1rem);
   font-weight: 400;
   color: var(--text-main);
@@ -237,24 +270,73 @@
 
 /* ── 추천 박스 ── */
 .recommendation-box {
-  background: rgba(78, 205, 196, 0.06);
-  padding: 1.25rem 1.5rem;
-  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.5rem;
+  border-radius: 20px;
   text-align: left;
-  border: 1px solid rgba(78, 205, 196, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
-  line-height: 1.7;
-  font-size: 0.95rem;
   color: var(--text-main);
-  box-shadow: 0 0 16px rgba(78, 205, 196, 0.07);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .recommendation-icon {
-  margin-right: 0.4rem;
+  font-size: 1.2rem;
 }
 
 .recommendation-box strong {
-  color: #FFD700;
+  color: #ffd700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.recommendation-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-sub);
+  margin-bottom: 1.25rem;
+  word-break: keep-all;
+}
+
+.recommendation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.recommendation-item {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  line-height: 1.5;
+  transition: transform 0.2s ease;
+}
+
+.recommendation-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateX(4px);
+}
+
+.task-bullet {
+  font-weight: bold;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* ── 재시작 버튼 ── */
@@ -272,10 +354,11 @@
 
 .restart-button:hover {
   border-color: rgba(255, 107, 107, 0.5);
-  color: #FF8F8F;
+  color: #ff8f8f;
   background: rgba(255, 107, 107, 0.08);
-  box-shadow: 0 6px 0px 0px rgba(0, 0, 0, 0.25),
-              0 0 20px rgba(255, 107, 107, 0.15);
+  box-shadow:
+    0 6px 0px 0px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(255, 107, 107, 0.15);
   transform: translateY(-2px);
 }
 
