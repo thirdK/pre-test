@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { questions as originalQuestions } from "../data/questions";
 import "./Quiz.css";
 
@@ -31,6 +31,20 @@ const Quiz = ({ onFinish }) => {
   const [isExiting, setIsExiting] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
   const [pressedIndex, setPressedIndex] = useState(null);
+
+  // 전환 중 document 레벨에서 모든 터치 차단 (진행 중인 터치 포함)
+  useEffect(() => {
+    if (!isEntering) return;
+    const block = (e) => e.preventDefault();
+    document.addEventListener('touchstart', block, { passive: false });
+    document.addEventListener('touchmove',  block, { passive: false });
+    document.addEventListener('touchend',   block, { passive: false });
+    return () => {
+      document.removeEventListener('touchstart', block);
+      document.removeEventListener('touchmove',  block);
+      document.removeEventListener('touchend',   block);
+    };
+  }, [isEntering]);
 
   const handleAnswerClick = (e, id, group, score) => {
     // 모바일 포커스 잔상 방지를 위해 포커스 강제 해제
@@ -65,19 +79,6 @@ const Quiz = ({ onFinish }) => {
 
   return (
     <div className="quiz-container">
-      {/* 전환 중 터치 완전 차단 오버레이 */}
-      {isEntering && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 9999,
-          }}
-          onTouchStart={(e) => e.preventDefault()}
-          onTouchMove={(e) => e.preventDefault()}
-          onTouchEnd={(e) => e.preventDefault()}
-        />
-      )}
       {/* 배경 글로우 오브 */}
       <div className="quiz-orb quiz-orb--1" aria-hidden="true" />
       <div className="quiz-orb quiz-orb--2" aria-hidden="true" />
