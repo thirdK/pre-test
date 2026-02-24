@@ -30,6 +30,7 @@ const Quiz = ({ onFinish }) => {
   const [answers, setAnswers] = useState({});
   const [isExiting, setIsExiting] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
+  const [pressedIndex, setPressedIndex] = useState(null);
 
   const handleAnswerClick = (e, id, group, score) => {
     // 모바일 포커스 잔상 방지를 위해 포커스 강제 해제
@@ -44,6 +45,7 @@ const Quiz = ({ onFinish }) => {
     setIsExiting(true);
     setTimeout(() => {
       if (nextQuestion < questions.length) {
+        setPressedIndex(null);
         setIsEntering(true);
         setCurrentQuestionIndex(nextQuestion);
         setIsExiting(false);
@@ -107,7 +109,11 @@ const Quiz = ({ onFinish }) => {
           {currentQuestion.options.map((option, index) => (
             <button
               key={`${currentQuestion.id}-${index}`}
-              className="option-button"
+              className={`option-button${pressedIndex === index ? ' option-button--pressed' : ''}`}
+              onPointerDown={() => !isEntering && setPressedIndex(index)}
+              onPointerUp={() => setPressedIndex(null)}
+              onPointerLeave={() => setPressedIndex(null)}
+              onPointerCancel={() => setPressedIndex(null)}
               onClick={(e) =>
                 handleAnswerClick(
                   e,
