@@ -31,6 +31,7 @@ const Quiz = ({ onFinish }) => {
   const [isExiting, setIsExiting] = useState(false);
   const [pressedIndex, setPressedIndex] = useState(null);
   const [blocked, setBlocked] = useState(false);
+  const touchStartY = React.useRef(0);
 
   const handleAnswerSelect = (id, group, score) => {
     if (blocked) return;
@@ -109,12 +110,19 @@ const Quiz = ({ onFinish }) => {
               role="button"
               tabIndex={blocked ? -1 : 0}
               className={`option-button${pressedIndex === index ? ' option-button--pressed' : ''}`}
-              onTouchStart={() => !blocked && setPressedIndex(index)}
+              onTouchStart={(e) => {
+                if (blocked) return;
+                touchStartY.current = e.touches[0].clientY;
+                setPressedIndex(index);
+              }}
               onTouchEnd={(e) => {
                 e.preventDefault();
                 if (blocked) return;
+                const movedY = Math.abs(e.changedTouches[0].clientY - touchStartY.current);
                 setPressedIndex(null);
-                handleAnswerSelect(currentQuestion.id, currentQuestion.group, option.score);
+                if (movedY < 10) {
+                  handleAnswerSelect(currentQuestion.id, currentQuestion.group, option.score);
+                }
               }}
               onTouchCancel={() => setPressedIndex(null)}
               onMouseDown={() => !blocked && setPressedIndex(index)}
