@@ -65,6 +65,19 @@ const Quiz = ({ onFinish }) => {
 
   return (
     <div className="quiz-container">
+      {/* 전환 중 터치 완전 차단 오버레이 */}
+      {isEntering && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+          }}
+          onTouchStart={(e) => e.preventDefault()}
+          onTouchMove={(e) => e.preventDefault()}
+          onTouchEnd={(e) => e.preventDefault()}
+        />
+      )}
       {/* 배경 글로우 오브 */}
       <div className="quiz-orb quiz-orb--1" aria-hidden="true" />
       <div className="quiz-orb quiz-orb--2" aria-hidden="true" />
@@ -97,8 +110,7 @@ const Quiz = ({ onFinish }) => {
       </div>
 
       {/* 질문 + 선택지: 전환 애니메이션 래퍼 */}
-      <div className={`quiz-content ${isExiting ? 'quiz-content--exit' : 'quiz-content--enter'}`}
-           style={isEntering ? { pointerEvents: 'none' } : undefined}>
+      <div className={`quiz-content ${isExiting ? 'quiz-content--exit' : 'quiz-content--enter'}`}>
         {/* 질문 */}
         <div className="question-section">
           <h2 className="question-text">{currentQuestion.question}</h2>
