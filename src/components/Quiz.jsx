@@ -29,6 +29,7 @@ const Quiz = ({ onFinish }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isExiting, setIsExiting] = useState(false);
+  const [isEntering, setIsEntering] = useState(false);
 
   const handleAnswerClick = (e, id, group, score) => {
     // 모바일 포커스 잔상 방지를 위해 포커스 강제 해제
@@ -43,8 +44,10 @@ const Quiz = ({ onFinish }) => {
     setIsExiting(true);
     setTimeout(() => {
       if (nextQuestion < questions.length) {
+        setIsEntering(true);
         setCurrentQuestionIndex(nextQuestion);
         setIsExiting(false);
+        setTimeout(() => setIsEntering(false), 350);
       } else {
         onFinish(newAnswers);
       }
@@ -92,7 +95,8 @@ const Quiz = ({ onFinish }) => {
       </div>
 
       {/* 질문 + 선택지: 전환 애니메이션 래퍼 */}
-      <div className={`quiz-content ${isExiting ? 'quiz-content--exit' : 'quiz-content--enter'}`}>
+      <div className={`quiz-content ${isExiting ? 'quiz-content--exit' : 'quiz-content--enter'}`}
+           style={isEntering ? { pointerEvents: 'none' } : undefined}>
         {/* 질문 */}
         <div className="question-section">
           <h2 className="question-text">{currentQuestion.question}</h2>
