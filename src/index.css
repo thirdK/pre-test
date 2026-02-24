@@ -55,7 +55,7 @@ h1, h2, h3, .title, .level-title {
   letter-spacing: 0;
 }
 
-button:not(.option-button) {
+button {
   background-color: var(--primary-color);
   color: white;
   border-radius: 100px; /* Fully rounded buttons */
@@ -69,13 +69,13 @@ button:not(.option-button) {
   box-shadow: 0 4px 0px 0px #EE5253; /* Button depth effect */
 }
 
-button:not(.option-button):hover {
+button:hover {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 0px 0px #EE5253;
 }
 
-button:not(.option-button):active {
+button:active {
   transform: translateY(2px);
   box-shadow: 0 0px 0px 0px #EE5253;
 }

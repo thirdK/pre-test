@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { questions as originalQuestions } from "../data/questions";
 import "./Quiz.css";
 
@@ -29,41 +29,25 @@ const Quiz = ({ onFinish }) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [isExiting, setIsExiting] = useState(false);
-  const [isEntering, setIsEntering] = useState(false);
   const [pressedIndex, setPressedIndex] = useState(null);
+  const [blocked, setBlocked] = useState(false);
 
-  // 전환 중 document 레벨에서 모든 터치 차단 (진행 중인 터치 포함)
-  useEffect(() => {
-    if (!isEntering) return;
-    const block = (e) => e.preventDefault();
-    document.addEventListener('touchstart', block, { passive: false });
-    document.addEventListener('touchmove',  block, { passive: false });
-    document.addEventListener('touchend',   block, { passive: false });
-    return () => {
-      document.removeEventListener('touchstart', block);
-      document.removeEventListener('touchmove',  block);
-      document.removeEventListener('touchend',   block);
-    };
-  }, [isEntering]);
-
-  const handleAnswerClick = (e, id, group, score) => {
-    // 모바일 포커스 잔상 방지를 위해 포커스 강제 해제
-    if (e.currentTarget) {
-      e.currentTarget.blur();
-    }
+  const handleAnswerSelect = (id, group, score) => {
+    if (blocked) return;
 
     const newAnswers = { ...answers, [id]: { group, score } };
     setAnswers(newAnswers);
     const nextQuestion = currentQuestionIndex + 1;
 
+    setBlocked(true);
     setIsExiting(true);
+    setPressedIndex(null);
+
     setTimeout(() => {
       if (nextQuestion < questions.length) {
-        setPressedIndex(null);
-        setIsEntering(true);
         setCurrentQuestionIndex(nextQuestion);
         setIsExiting(false);
-        setTimeout(() => setIsEntering(false), 350);
+        setTimeout(() => setBlocked(false), 350);
       } else {
         onFinish(newAnswers);
       }
@@ -120,25 +104,30 @@ const Quiz = ({ onFinish }) => {
         {/* 선택지 */}
         <div className="options-container">
           {currentQuestion.options.map((option, index) => (
-            <button
+            <div
               key={`${currentQuestion.id}-${index}`}
+              role="button"
+              tabIndex={blocked ? -1 : 0}
               className={`option-button${pressedIndex === index ? ' option-button--pressed' : ''}`}
-              onPointerDown={() => !isEntering && setPressedIndex(index)}
-              onPointerUp={() => setPressedIndex(null)}
-              onPointerLeave={() => setPressedIndex(null)}
-              onPointerCancel={() => setPressedIndex(null)}
-              onClick={(e) =>
-                handleAnswerClick(
-                  e,
-                  currentQuestion.id,
-                  currentQuestion.group,
-                  option.score,
-                )
-              }
+              onTouchStart={() => !blocked && setPressedIndex(index)}
+              onTouchEnd={(e) => {
+                e.preventDefault();
+                if (blocked) return;
+                setPressedIndex(null);
+                handleAnswerSelect(currentQuestion.id, currentQuestion.group, option.score);
+              }}
+              onTouchCancel={() => setPressedIndex(null)}
+              onMouseDown={() => !blocked && setPressedIndex(index)}
+              onMouseUp={() => {
+                if (blocked) return;
+                setPressedIndex(null);
+                handleAnswerSelect(currentQuestion.id, currentQuestion.group, option.score);
+              }}
+              onMouseLeave={() => setPressedIndex(null)}
             >
               <span className="option-label">{OPTION_LABELS[index]}</span>
               <span className="option-text">{option.text}</span>
-            </button>
+            </div>
           ))}
         </div>
       </div>

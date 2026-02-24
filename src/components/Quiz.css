@@ -251,8 +251,8 @@
   backdrop-filter: blur(6px);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: none;
   outline: none;
+  user-select: none;
 }
 
 /* 호버(Desktop) 및 눌림(Mobile/JS 제어) 시 골드 하이라이트 */
