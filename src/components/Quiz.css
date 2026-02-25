@@ -187,7 +187,7 @@
 
 .progress-total {
   font-family: 'Courier New', 'Consolas', monospace;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-sub);
   opacity: 0.6;
   letter-spacing: 0.05em;
@@ -219,7 +219,7 @@
 
 .question-text {
   font-family: 'Jua', sans-serif;
-  font-size: clamp(1.15rem, 4vw, 1.45rem);
+  font-size: clamp(1.3rem, 4.5vw, 1.65rem);
   font-weight: 400;
   color: var(--text-main);
   line-height: 1.55;
@@ -243,7 +243,7 @@
   padding: 1.1rem 1.4rem;
   border-radius: 14px;
   text-align: left;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--text-main);
   transition: all 0.2s ease;
   font-weight: 500;
@@ -293,7 +293,7 @@
   align-items: center;
   justify-content: center;
   font-family: 'Courier New', monospace;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--text-sub);
   letter-spacing: 0;

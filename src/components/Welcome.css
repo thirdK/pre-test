@@ -151,7 +151,7 @@
 
 .description {
   color: var(--text-sub);
-  font-size: 1rem;
+  font-size: 1.15rem;
   line-height: 1.9;
   font-weight: 400;
   animation: slideDown 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
@@ -294,7 +294,7 @@
 }
 
 .card-label {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 600;
   color: inherit;
   opacity: 0.9;
@@ -346,7 +346,7 @@
 }
 
 .cta-hint {
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   color: var(--text-sub);
   opacity: 0.6;
 }

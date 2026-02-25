@@ -1,19 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 
 :root {
   /* Dark Game Palette */
-  --primary-color: #FF6B6B;    /* Coral — quiz/result 버튼 유지 */
-  --primary-hover: #FF5252;
-  --secondary-color: #4ECDC4;  /* Mint — 진행바 등 */
-  --background-color: #1B1933; /* 조금 밝은 다크 퍼플 */
-  --card-bg: #231F40;          /* 조금 밝은 다크 카드 */
-  --text-main: #F0EEFF;        /* Near-white with purple tint */
-  --text-sub: #8B8FA8;         /* Muted purple-gray */
-  --border-color: #2D2B45;
+  --primary-color: #ff6b6b; /* Coral — quiz/result 버튼 유지 */
+  --primary-hover: #ff5252;
+  --secondary-color: #4ecdc4; /* Mint — 진행바 등 */
+  --background-color: #1b1933; /* 조금 밝은 다크 퍼플 */
+  --card-bg: #231f40; /* 조금 밝은 다크 카드 */
+  --text-main: #f0eeff; /* Near-white with purple tint */
+  --text-sub: #8b8fa8; /* Muted purple-gray */
+  --border-color: #2d2b45;
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-  --shadow-card: 0 0 0 1px rgba(124, 58, 237, 0.2), 0 0 60px rgba(124, 58, 237, 0.12), 0 24px 60px rgba(0, 0, 0, 0.6);
+  --shadow-card:
+    0 0 0 1px rgba(124, 58, 237, 0.2), 0 0 60px rgba(124, 58, 237, 0.12),
+    0 24px 60px rgba(0, 0, 0, 0.6);
 
-  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family:
+    "Noto Sans KR",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
@@ -47,8 +55,12 @@ body {
   width: 100%;
 }
 
-h1, h2, h3, .title, .level-title {
-  font-family: 'Jua', sans-serif;
+h1,
+h2,
+h3,
+.title,
+.level-title {
+  font-family: "Jua", sans-serif;
   line-height: 1.2;
   font-weight: 400; /* Jua is inherently bold */
   color: var(--text-main);
@@ -66,16 +78,16 @@ button {
   font-family: inherit;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 4px 0px 0px #EE5253; /* Button depth effect */
+  box-shadow: 0 4px 0px 0px #ee5253; /* Button depth effect */
 }
 
 button:hover {
   background-color: var(--primary-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 0px 0px #EE5253;
+  box-shadow: 0 6px 0px 0px #ee5253;
 }
 
 button:active {
   transform: translateY(2px);
-  box-shadow: 0 0px 0px 0px #EE5253;
+  box-shadow: 0 0px 0px 0px #ee5253;
 }
